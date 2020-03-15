@@ -1,0 +1,20 @@
+{
+  "name": "sandbox",
+  "version": "0.0.1",
+  "description": "My repo for playing around with new stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bikingbadger/sandbox.git"
+  },
+  "keywords": [],
+  "author": "Hilton Meyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bikingbadger/sandbox/issues"
+  },
+  "homepage": "https://github.com/bikingbadger/sandbox#readme"
+}
