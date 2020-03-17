@@ -5,6 +5,7 @@ new Vue({
     secondCounter: 0,
     randomNumber: 0,
     redSelected: false,
+    color: 'green'
   },
   computed: {
     output: function() {

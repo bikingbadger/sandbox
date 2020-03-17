@@ -25,7 +25,8 @@
         <h1>Dynamic Styling</h1>
         <div class="box" @click="redSelected = !redSelected" :class="{red:redSelected}"></div>
         <div class="box" :class="divClasses"></div>
-        <div class="box"></div>
+        <div class="box" :class="color"></div>
+        <input type="text" v-model="color">
     </div>
     <script src="app.js"></script>
 </body>
