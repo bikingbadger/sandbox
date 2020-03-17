@@ -11,16 +11,15 @@
 <body>
 
     <div id="app">
-        <h1>Two Way Binding</h1>
-        <input type="text" v-model="name">
-        <p>{{ name }}</p>
-
         <h1>Computed Properties</h1>
         <button v-on:click="counter++">Increase</button>
         <button v-on:click="counter--">Decrease</button>
         <button v-on:click="secondCounter++">Second Increase</button>
-        <p>Counter: {{ counter }} | {{secondCounter}}</p>
-        <p>Result: {{ result() }} | {{ output }}</p>
+        <button @click="randomNumber=Math.random()">Random</button>
+        <p>Counter: {{ counter }} | {{secondCounter}} | {{ randomNumber }}</p>
+        <p>Output:  {{ output }}</p>
+        <p>Result:  {{ result() }}</p>
+        <p>Another Result:  {{ anotherResult() }}</p>
     </div>
     <script src="app.js"></script>
 </body>

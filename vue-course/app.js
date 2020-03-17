@@ -3,7 +3,7 @@ new Vue({
   data: {
     counter: 0,
     secondCounter: 0,
-    name: 'Hilton',
+    randomNumber: 0
   },
   computed: {
     output: function() {
@@ -16,5 +16,9 @@ new Vue({
       console.log('Method Call');
       return this.counter > 5 ? 'Greater than 5' : 'Less than 5';
     },
+    anotherResult: function() {
+      console.log('Another Method Call');
+      return this.counter > 5 ? 'Greater than 5' : 'Less than 5';
+    }
   },
 });
