@@ -9,9 +9,10 @@
 </head>
 
 <body>
-    <div class="app">
-        <p>You can see me</p>
-        <p>Do you see me</p>
+    <div id="app">
+        <button @click="show = !show">Switch</button>
+        <p v-if="show">You can see me!!!!!!!!!!!!!!!!</p>
+        <p>Do you see me?</p>
     </div>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <script src="app.js"></script>
