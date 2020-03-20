@@ -27,7 +27,7 @@
 
         <h1>Lists with v-for</h1>
         <ul>
-            <li v-for="ingredient in ingredients">{{ingredient}}</li>
+            <li v-for="(ingredient, i) in ingredients">{{i}}: {{ingredient}}</li>
         </ul>
     </div>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
