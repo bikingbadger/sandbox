@@ -19,6 +19,11 @@
             <h1>I'm in a group</h1>
             <p>Everything will show and hide here</p>
         </template>
+
+        <div v-show="show">
+            <h1>Using v-show</h1>
+            <p>This will also hide like v-if but it will still be in the document. It will just get the style of "display:none"</p>
+        </div>
     </div>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <script src="app.js"></script>
