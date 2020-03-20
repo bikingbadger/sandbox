@@ -24,6 +24,11 @@
             <h1>Using v-show</h1>
             <p>This will also hide like v-if but it will still be in the document. It will just get the style of "display:none"</p>
         </div>
+
+        <h1>Lists with v-for</h1>
+        <ul>
+            <li v-for="ingredient in ingredients">{{ingredient}}</li>
+        </ul>
     </div>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <script src="app.js"></script>
