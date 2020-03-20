@@ -29,6 +29,11 @@
         <ul>
             <li v-for="(ingredient, i) in ingredients">{{i}}: {{ingredient}}</li>
         </ul>
+
+        <template v-for="(ingredient, i) in ingredients">
+            <h2 style="text-transform: capitalize;">{{ingredient}}</h2>
+            <a href="#">{{i}}</a>
+        </template>
     </div>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <script src="app.js"></script>
