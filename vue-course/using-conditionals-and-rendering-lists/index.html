@@ -34,6 +34,22 @@
             <h2 style="text-transform: capitalize;">{{ingredient}}</h2>
             <a href="#">{{i}}</a>
         </template>
+
+        <hr>
+        <h2>Looping through objects</h2>
+        
+        <h3>Basic</h3>
+        <ul>
+            <li v-for="person in people">{{ person.name }}</li>
+        </ul>
+
+        <h3>Loop through Object</h3>
+        <ul>
+            <li v-for="person in people">
+                <div v-for="(value,key,index) in person">{{key}} : {{value}} ({{index}})</div>
+            </li>
+        </ul>
+
     </div>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <script src="app.js"></script>
