@@ -2,7 +2,7 @@
   <div class="grid grid-cols-2 gap-4 p-4">
     <header class="col-span-2">
       <h1 class="text-3xl text-center">The User Component</h1>
-      <p class="p-2">I'm an awesome User! {{ username }}, {{ age }}</p>
+      <p class="p-2">I'm an awesome User!</p>
       <button @click="changeName">Set</button>
     </header>
     <app-user-detail
@@ -10,9 +10,7 @@
       @nameWasReset="username = $event"
       :userAge="age"
     ></app-user-detail>
-    <app-user-edit 
-        :userAge="age"
-        @updateAge="age = $event"></app-user-edit>
+    <app-user-edit :userAge="age" @updateAge="age = $event"></app-user-edit>
   </div>
 </template>
 
