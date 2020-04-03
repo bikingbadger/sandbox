@@ -1,7 +1,8 @@
 <template>
-    <div class="component">
-        <h3>You may edit the User here</h3>
-        <p>Edit me!</p>
+    <div class="rounded shadow-lg">
+        <h2 class="pt-4 text-2xl text-center font-bold">Edit</h2>
+        <h3 class="text-xl text-center italic">You may edit the User here</h3>
+        <p class="p-2">Edit me!</p>
     </div>
 </template>
 
@@ -9,7 +10,5 @@
 </script>
 
 <style scoped>
-    div {
-        background-color: lightgreen;
-    }
+    
 </style>
