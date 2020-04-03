@@ -11,7 +11,7 @@
 <script>
 export default {
   props: {
-    username: { type: String, required: true },
+    username: { type: String },
   },
 };
 </script>
