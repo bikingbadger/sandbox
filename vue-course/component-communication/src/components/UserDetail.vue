@@ -9,11 +9,11 @@
 </template>
 
 <script>
-export default  {
-    props: [
-        'username'
-    ]
-}
+export default {
+  props: {
+    username: { type: String, required: true },
+  },
+};
 </script>
 
 <style scoped></style>
