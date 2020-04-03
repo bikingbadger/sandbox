@@ -1,5 +1,8 @@
 <template>
-  <div id="app" class="container mx-auto min-h-screen bg-orange-100 text-blue-900 text-lg">
+  <div
+    id="app"
+    class="container mx-auto min-h-screen bg-orange-100 text-blue-900 text-lg"
+  >
     <User></User>
   </div>
 </template>
@@ -15,5 +18,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
