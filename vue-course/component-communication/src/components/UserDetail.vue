@@ -5,12 +5,14 @@
       You may view the User Details here
     </h3>
     <p class="p-2">Username: {{ username }}</p>
-    <p class="p-2">Age: {{userAge}}</p>
+    <p class="p-2">Age: {{ userAge }}</p>
     <button @click="resetName">Reset</button>
   </div>
 </template>
 
 <script>
+import { eventBus } from '../main';
+
 export default {
   props: {
     username: { type: String },
@@ -23,6 +25,11 @@ export default {
       this.username = 'Noname';
       this.$emit('nameWasReset', this.username);
     },
+  },
+  created() {
+    eventBus.$on('updateAge', data => {
+      this.userAge = data;
+    });
   },
 };
 </script>
