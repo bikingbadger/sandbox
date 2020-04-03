@@ -5,6 +5,8 @@
       You may view the User Details here
     </h3>
     <p class="p-2">Username: {{ username }}</p>
+    <p class="p-2">Age: {{userAge}}</p>
+    <button @click="resetName">Reset</button>
   </div>
 </template>
 
@@ -12,6 +14,15 @@
 export default {
   props: {
     username: { type: String },
+    userAge: {
+      type: Number,
+    },
+  },
+  methods: {
+    resetName() {
+      this.username = 'Noname';
+      this.$emit('nameWasReset', this.username);
+    },
   },
 };
 </script>
