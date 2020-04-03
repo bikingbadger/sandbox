@@ -1,6 +1,6 @@
 <template>
 <header>
-    <h1>Server Room</h1>
+    <h1 class="text-2xl">Server Room</h1>
 </header>
  </template>
 
@@ -8,4 +8,6 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+   
+</style>
