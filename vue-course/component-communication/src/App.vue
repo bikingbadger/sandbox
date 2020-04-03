@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="container mx-auto min-h-screen bg-orange-100 text-blue-900 text-lg"
+    class="container mx-auto min-h-screen bg-orange-200 text-blue-900 text-lg"
   >
     <User></User>
   </div>
