@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+</head>
+
+<body onload="initializeModel()">
+    <input type="button" onclick="Controller.getCurrent();" value="Current Track">
+    <input type="button" onclick="Controller.moveNext();" value="Next Track">
+    <input type="button" onclick="Controller.movePrev();" value="Previous Track">
+
+    <select id="playListSelector" multiple readonly>
+        <option value="0">Track 1</option>
+        <option value="1">Track 2</option>
+        <option value="2">Track 3</option>
+        <option value="3">Track 4</option>
+    </select>
+    <p><span id="output" /></p>
+    <h2>Current Song</h2>
+    <p><span data-my-element /></p>
+
+
+    <script language="javascript">
+        // HTML Elements
+        const coolView = document.querySelector("[data-my-element]");
+        console.log(coolView);
+
+        // PubSub
+        var subscribers = [];
+        function publish(event) {
+            for (i in subscribers) {
+                subscribers[i].notify(event);
+            }
+        };
+
+        // MVC
+        var Model = {
+            playlist: new Array(),
+            currentIndex: 0,
+            reLoad: function () {
+                currentIndex = 0;
+                var tracks = document.getElementById("playListSelector").options;
+                //console.log(tracks);
+                for (var i = 0; i < tracks.length; i++) {
+                    // console.log(tracks[i]);
+                    this.playlist[i] = {id: tracks[i].value, name: tracks[i].innerText};
+                }
+                // console.log(this.playlist);
+            },
+            next: function () {
+                if (this.currentIndex < (this.playlist.length - 1))
+                    this.currentIndex++;
+                publish(this);
+            },
+            prev: function () {
+                if (this.currentIndex > 0)
+                    this.currentIndex--;
+                publish(this);
+            },
+            current: function () {
+                publish(this);
+            }
+        };
+
+        var View = {
+            notify: function (model) {
+                // console.log(model[currentIndex]);
+                document.getElementById("output").innerHTML = JSON.stringify(model);
+                document.getElementById("playListSelector").selectedIndex = model[currentIndex];
+            }
+        };
+
+        var CoolView = {
+            notify: function (model) {
+                console.log(model.playlist[model.currentIndex].name);
+
+                const trackName = model.playlist[model.currentIndex].name;
+                coolView.innerHTML = trackName;
+            }
+        }
+
+        var Controller = {
+            model: Model,
+            moveNext: function () {
+                this.model.next();
+                return this;
+            },
+            movePrev: function () {
+                this.model.prev();
+                return this;
+            },
+            getCurrent: function () {
+                this.model.current();
+                return this;
+            }
+        };
+
+        subscribers.push(View); // Subscribe for updates
+        subscribers.push(CoolView);
+
+        function initializeModel() {
+            Model.reLoad();
+        }
+
+    </script>
+</body>
+
+</html>
