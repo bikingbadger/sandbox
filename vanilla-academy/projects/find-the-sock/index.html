@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Shuffle Monsters</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+
+    <style type="text/css">
+        /**
+		 * A simple grid layout
+		 */
+        #app {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+        }
+
+        .monster {
+            min-height: 6em;
+            padding: 1em;
+            align-content: center;
+        }
+
+        /**
+		 * Make sure images scale
+		 */
+        img {
+            height: 100%;
+            max-width: 100%;
+        }
+
+        .game-over,
+        .game-won {
+            position: relative;
+            top: 50%;
+            height: 50vh;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .scoreboard {
+            display: grid;
+            grid-template-areas:
+                "heading heading"
+                "wins percentage";
+            justify-content: center;
+        }
+
+        .score-heading {
+            grid-area: heading;
+            text-align: center;
+        }
+
+        .score-wins {
+            grid-area: wins;
+            padding: 0 1rem;
+        }
+
+        .score-percentage {
+            grid-area: percentage;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>Shuffle Monsters</h2>
+    <div class='scoreboard'>
+        <h3 class="score-heading">Score Board</h3>
+        <div class="score-wins">Wins: <span id='scoreWins'></span>
+        </div>
+        <div class="score-percentage">Percentage: <span id='winPercentage'></span>
+        </div>
+    </div>
+    <button onclick="shuffleMonsters();" class="game-over hide"><img src="sock.svg" alt="Game over" aria-live="polite"></button>
+    <button onclick="shuffleMonsters();" class="game-won hide"><img src="trophy.svg" alt="You Won" aria-live="polite"></button>
+    <div id="app" aria-live="polite"></div>
+
+    <footer>
+        <hr>
+        <p class="text-small text-muted">Icons by <a href="https://thenounproject.com/term/door/311732/">Jamie Dickinson</a>, <a href="https://thenounproject.com/term/monster/184225/">Nicky Knicky</a>, <a href="https://thenounproject.com/term/monster/1510400/">Alvaro Cabrera</a>, <a href="https://thenounproject.com/term/monster/28460/">Eliricon</a>, <a href="https://thenounproject.com/term/monster/82823/">April Yang</a>, <a href="https://thenounproject.com/term/monster/1062009/">tk66</a>, <a href="https://thenounproject.com/term/monster/24990/">Alex WaZa</a>, <a href="https://thenounproject.com/term/monster/37212/">Husein Aziz</a>, <a href="https://thenounproject.com/term/monster/2236082">iconcheese</a>, and <a href="https://thenounproject.com/term/socks/38451/">Yazmin Alanis</a>.</p>
+    </footer>
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.includes%2Cfetch%2Cdefault"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+
+    <style>
+        .temperature {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            font-size: xx-large;
+            font-weight: bolder;
+            display: grid;
+            justify-content: center;
+            align-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>Weather App</h2>
+
+
+    <div id="app">
+        <div class="temperature" aria-live="polite">Checking the weather near you...</div>
+    </div>
+
+    <details>
+        <summary>Javascript Solution</summary>
+        <pre>
+// Main script
+((doc, win, undefined) => {
+    "use strict";  
+    
+    weatherPlugin({
+        units: 'I',
+        showIcon: false
+    });
+})(document, window);
+
+//Plugin
+const weatherPlugin = options =&gt; {
+    // Default Options
+    let defaults = {
+        selector: &quot;.temperature&quot;,
+        units: &quot;M&quot;,
+        message: &quot;It's currently {temp} with wind speed {wind_spd} in {city_name}&quot;,
+        showIcon: true,
+    };
+
+    // Merge any user options into the defaults
+    var settings = Object.assign(defaults, options);
+
+    // Selector
+    const tempSelector = document.querySelector(settings.selector);
+
+    // Location API URL
+    const locationAPI = &quot;https://ipapi.co/json/&quot;;
+
+    // Weather API URL with parameters that can change
+    const weatherAPI =
+        &quot;https://api.weatherbit.io/v2.0/current?key=284801ec4def4dcca381cdb8008bf182&quot;;
+    const units = &quot;&amp;units=&quot; + settings.units;
+    const latParam = &quot;&amp;lat=&quot;;
+    const longParam = &quot;&amp;lon=&quot;;
+
+    // Elements for substituting in the message
+    const elements = [
+        &quot;lat&quot;,
+        &quot;lon&quot;,
+        &quot;sunrise&quot;,
+        &quot;sunset&quot;,
+        &quot;timezone&quot;,
+        &quot;station&quot;,
+        &quot;ob_time&quot;,
+        &quot;datetime&quot;,
+        &quot;ts&quot;,
+        &quot;city_name&quot;,
+        &quot;country_code&quot;,
+        &quot;state_code&quot;,
+        &quot;pres&quot;,
+        &quot;slp&quot;,
+        &quot;wind_spd&quot;,
+        &quot;wind_dir&quot;,
+        &quot;wind_cdir&quot;,
+        &quot;wind_cdir_full&quot;,
+        &quot;app_temp&quot;,
+        &quot;temp&quot;,
+        &quot;rh&quot;,
+        &quot;dewpt&quot;,
+        &quot;clouds&quot;,
+        &quot;pod&quot;,
+        &quot;vis&quot;,
+        &quot;precip&quot;,
+        &quot;snow&quot;,
+        &quot;uv&quot;,
+        &quot;aqi&quot;,
+        &quot;dhi&quot;,
+        &quot;dni&quot;,
+        &quot;ghi&quot;,
+        &quot;solar_rad&quot;,
+        &quot;elev_angle&quot;,
+        &quot;h_angle&quot;,
+    ];
+
+    /**
+        * Sanitize and encode all HTML in a user-submitted string
+        * @param  {String} str  The user-submitted string
+        * @return {String} str  The sanitized string
+        */
+    var sanitizeHTML = function(str) {
+        var temp = document.createElement(&quot;div&quot;);
+        temp.textContent = str;
+        return temp.innerHTML;
+    };
+
+    /**
+        * Replace the variables in curly brackets with the data from the weather
+        * @param {Object} weather object
+        * @return (String) message with substituted data
+        */
+    const replaceTemplateVariables = weather =&gt; {
+        try {
+        let message = settings.message;
+        elements.forEach(element =&gt; {
+            const lookup = &quot;{&quot; + element + &quot;}&quot;;
+            const value = eval(&quot;weather.&quot; + element);
+            console.log(message, lookup, value);
+            message = message.replace(lookup, value);
+        });
+        console.log(message);
+        return message;
+        } catch (error) {
+        console.log(error);
+        return error;
+        }
+    };
+
+    /**
+        * Build the HTML for the weather plugin
+        * @param {Object} weather
+        */
+    const setWeather = weather =&gt; {
+        tempSelector.innerHTML = settings.showIcon
+        ? &quot;&lt;p&gt;&quot; +
+            '&lt;img src=&quot;https://www.weatherbit.io/static/img/icons/' +
+            sanitizeHTML(weather.weather.icon) +
+            '.png&quot;&gt;' +
+            &quot;&lt;/p&gt;&quot;
+        : &quot;&quot;;
+
+        tempSelector.innerHTML +=
+        &quot;&lt;p&gt;&quot; + sanitizeHTML(replaceTemplateVariables(weather)) + &quot;&lt;/p&gt;&quot;;
+    };
+
+    // Fetch the weather based on the IP
+    fetch(locationAPI)
+        .then(response =&gt; {
+        if (response.ok) {
+            return response.json();
+        } else {
+            return Promise.reject(response);
+        }
+        })
+        .then(data =&gt; {
+        // Save location data to variable
+        let location = data;
+        if (location.latitude &amp;&amp; location.longitude) {
+            let weatherURL = `${weatherAPI}${latParam}${location.latitude}${longParam}${location.longitude}${units}`;
+            return fetch(weatherURL);
+        } else {
+            return Promise.reject(&quot;Could not get location via IP&quot;);
+        }
+        })
+        .then(response =&gt; {
+        console.log(response);
+        if (response.ok) {
+            return response.json();
+        } else {
+            return Promise.reject(response);
+        }
+        })
+        .then(data =&gt; {
+        setWeather(data.data[0]);
+        return;
+        })
+        .catch(err =&gt; {
+        tempSelector.innerHTML = `Error fetching weather data ${err}`;
+        });
+    };
+  </pre>
+    </details>
+    <script src="weather-plugin.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

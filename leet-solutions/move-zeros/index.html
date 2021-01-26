@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Zero</title>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * @param {number[]} nums
+         * @return {void} Do not return anything, modify nums in-place instead.
+         */
+        var moveZeroes = function (nums) {
+
+            let i = 0;
+            let zeros = 0;
+            while (nums.length >= i) {
+                if (nums[i] === 0) {
+                    nums.splice(i, 1);
+                    zeros++;
+                } else {
+                    i++;
+                }
+            }
+            for (let i = 0; i < zeros; i++) {
+                nums.push(0)
+            }
+        };
+        let arr = [0, 1, 0, 3, 12];
+        moveZeroes(arr);
+        console.log(arr);
+
+
+        var moveZeroes2 = function (nums) {
+
+            let anchor = 0;
+            for (let i = 0; i < nums.length; i++) {
+
+                if (nums[i] !== 0) {
+                    let temp = nums[anchor];
+                    nums[anchor] = nums[i];
+                    nums[i] = temp;
+                    anchor++;
+                }
+            }
+        };
+
+        arr = [0, 1, 0, 3, 12];
+        moveZeroes2(arr);
+        console.log(arr);
+    </script>
+</body>
+
+</html>

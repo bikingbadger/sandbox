@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Fetch Promise</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>Non Duplicate Array</h2>
+
+    <div class='quote'>
+        <blockquote aria-live="polite">There are only three ways to motivate people: money, fear, and hunger.</blockquote>
+    </div>
+    <p class='center'><button>More Ron</button></p>
+    <details>
+        <summary>Javascript Solution</summary>
+        <pre>
+const quote = document.querySelector("blockquote");
+const button = document.querySelector("button");
+
+let quotes = [];
+
+// Append Quote
+const appendQuote = () => {
+    fetch("https://ron-swanson-quotes.herokuapp.com/v2/quotes")
+    .then(response => {
+        if (response.ok) {
+        return response.json();
+        } else {
+        return Promise.reject(response);
+        }
+    })
+    .then(data => {
+        const newQuote = data[0];
+        if (quotes.includes(newQuote)) {
+        console.log("Already exists fetch a new quote");
+        appendQuote();
+        } else {
+        if (quotes.length === 50) {
+            quotes.shift();
+        }
+        quotes.push(newQuote);
+        quote.innerText = newQuote;
+        }
+    })
+    .catch(err => {
+        console.log(`Error occured ${err}`);
+    });
+};
+
+// Check the click event for a checkbox
+const clickChecked = event => {
+    if (event.target.matches("button")) {
+    appendQuote();
+    }
+};
+
+// Listen for click
+window.addEventListener("click", clickChecked, true);
+
+appendQuote();
+</pre>
+    </details>
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.includes%2Cfetch%2Cdefault"></script>
+    <script src="/script/core.js"></script>
+    <script src="/script/vanilla.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Toggle Across Forms</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>Toggle Across Forms</h2>
+
+    <h2>Change Username</h2>
+
+    <p>Enter your username and password to change your username.</p>
+
+    <form>
+        <div>
+            <label for="username">Username <input type="text" name="username" id="username"></label>
+        </div>
+
+        <div>
+            <label for="password">Password <input type="password" name="password" id="password" class='inputPassword'></label>
+        </div>
+
+        <div>
+            <label for="show-password">
+                <input type="checkbox" name="show-passwords" id="show-password">
+                Show password
+            </label>
+        </div>
+
+        <p>
+            <button type="submit">Change Username</button>
+        </p>
+    </form>
+
+    <h2>Change Password</h2>
+
+    <p>Enter your current password and new password below.</p>
+
+    <form>
+        <div>
+            <label for="current-password">Current Password <input type="password" name="current-password" id="current-password" class='inputPassword'></label>
+        </div>
+
+        <div>
+            <label for="new-password">New Password <input type="password" name="new-password" id="new-password" class='inputPassword'></label>
+        </div>
+
+        <div>
+            <label for="show-passwords">
+                <input type="checkbox" name="show-passwords" id="show-passwords">
+                Show passwords
+            </label>
+        </div>
+
+        <p>
+            <button type="submit">Change Passwords</button>
+        </p>
+    </form>
+
+    <details>
+        <summary>Javascript Solution</summary>
+        <pre>
+// Elements
+let currentForm,
+    passwordFields,
+    checkbox = Element;
+
+// Toggle Password Field
+const togglePasswordFields = currentCheckbox => {
+    currentForm = currentCheckbox.closest("form");
+    passwordFields = Array.prototype.slice.call(
+    currentForm.getElementsByClassName("inputPassword"),
+    );
+    passwordFields.forEach(password => {
+    password.type = currentCheckbox.checked ? "text" : "password";
+    });
+};
+
+// Check the click event for a checkbox
+const clickChecked = event => {
+    if (event.target.matches('[name="show-passwords"]')) {
+    togglePasswordFields(event.target);
+    }
+};
+
+// Listen for checkbox click
+window.addEventListener("click", clickChecked, true);
+
+togglePasswordFields(document.querySelector("#show-password"));
+togglePasswordFields(document.querySelector("#show-passwords"));</pre>
+    </details>
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.matches"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

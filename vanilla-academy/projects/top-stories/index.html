@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NY Times Top Stories</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>NY Times Top Stories</h2>
+
+    <div id="app"></div>
+
+    <details>
+        <summary>Javascript Solution</summary>
+        <pre>
+const app = document.querySelector("#app");
+const api = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=VkxWa9dO1FPPlcrnwo3aRgPRAZN2uI4o";
+
+// Fetch the lastest top stories
+const topStories = fetch(api)
+    .then(response => {
+    if (response.ok) {
+        return response.json();
+    } else {
+        return Promise.reject(response);
+    }
+    })
+    .then(data => {
+    const news = data.results;
+    let html = news
+        .map(newsItem => {
+        const title =
+            '&lt;h3&gt;&lt;a href="' + newsItem.url + '" title="' + newsItem.abstract + '"&gt;' + newsItem.title + "&lt;/a&gt;&lt;/h3&gt;";
+        return title;
+        })
+        .join("");
+
+    app.innerHTML = html;
+    })
+    .catch(err => {
+    console.log(err);
+    });            
+        </pre>
+    </details>
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.includes%2Cfetch%2Cdefault"></script>
+    <script src="/script/core.js"></script>
+    <script src="/script/vanilla.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

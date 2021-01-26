@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vanilla Times</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+
+    <style type="text/css">
+        body {
+            max-width: 60rem;
+        }
+
+        .news {
+            display: grid;
+        }
+
+        .category {
+            list-style: none;
+            border: 2px solid var(--clr-primary);
+            border-radius: 6px;
+            padding: 0.1rem 0.3rem;
+            text-align: center;
+            align-content: center;
+        }
+
+        .articles {
+            display: grid;
+            grid-template-rows: repeat (auto-fill, 1fr);
+        }
+
+        article {
+            padding: 0.2rem 1rem;
+        }
+
+        .categories>ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            padding: 0;
+            grid-gap: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <!-- <p><a href="/vanilla-academy">&lt; Home</a> </p> -->
+    <h2>Vanilla Times</h2>
+    <div class="news">
+        <section class='categories'>
+            <ul>
+                <li class='category'>arts</li>
+                <li class='category'>automobiles</li>
+                <li class='category'>books</li>
+                <li class='category'>business</li>
+                <li class='category'>fashion</li>
+                <li class='category'>food</li>
+                <li class='category'>health</li>
+                <li class='category'>home</li>
+                <li class='category'>insider</li>
+                <li class='category'>magazine</li>
+                <li class='category'>movies</li>
+                <li class='category'>national</li>
+                <li class='category'>nyregion</li>
+                <li class='category'>obituaries</li>
+                <li class='category'>opinion</li>
+                <li class='category'>politics</li>
+                <li class='category'>realestate</li>
+                <li class='category'>science</li>
+                <li class='category'>sports</li>
+                <li class='category'>sundayreview</li>
+                <li class='category'>technology</li>
+                <li class='category'>theater</li>
+                <li class='category'>tmagazine</li>
+                <li class='category'>travel</li>
+                <li class='category'>upshot</li>
+                <li class='category'>world</li>
+            </ul>
+        </section>
+
+        <section class='articles'></section>
+    </div>
+    <details>
+        <summary>Javascript Solution</summary>
+        <pre>
+const articleSection = document.querySelector(".articles");
+const apiURL =
+  "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=VkxWa9dO1FPPlcrnwo3aRgPRAZN2uI4o";
+
+const categoryURL = category => {
+  return apiURL.replace("home", category);
+};
+
+const sanitizeHTML = (str) => {
+	var temp = document.createElement('div');
+	temp.textContent = str;
+	return temp.innerHTML;
+};
+
+const renderArticles = articles => {
+  firstFive = articles.slice(0,5);
+  articleSection.innerHTML = firstFive
+    .map(article => {
+      const html =
+        '&lt;article&gt;&lt;h3&gt;&lt;a href="' + article.url + '" target="blank"&gt;' +
+        article.title +
+        "&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;" +
+        article.abstract +
+        "&lt;p&gt;&lt;/article&gt;";
+
+      return html;
+    })
+    .join("");
+};
+
+const fetchURL = (url) => {
+  fetch(url)
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      return Promise.reject(response);
+    }
+  })
+  .then(data => {
+    renderArticles(data.results);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
+document.addEventListener(
+  "click",
+  event => {
+    if (event.target.className === "category") {
+      category = event.target.innerText;
+      url = categoryURL(category);      
+      // Fetch the latest top stories
+      fetchURL(url);
+    }
+  },
+  false,
+);
+
+fetchURL(apiURL);
+        </pre>
+    </details>
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.includes%2Cfetch%2Cdefault"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

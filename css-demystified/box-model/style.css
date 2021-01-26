@@ -1,0 +1,22 @@
+.content {
+    box-sizing: border-box;
+  width: 100%;
+  border: 50px solid red;
+  padding: 50px;
+  margin-top: 10em;
+  background: white;
+  box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+}
+
+:root {
+  --clr-body: #333333;
+  --clr-bg: #ddd;
+}
+
+body {
+  font-family: basic-sans, sans-serif;
+  font-size: 1.125em;
+  line-height: 1.6;
+  color: var(--clr-body);
+  background: var(--clr-bg);
+}

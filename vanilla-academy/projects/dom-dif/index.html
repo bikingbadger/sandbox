@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Template</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+    <style>
+    input {
+        font-size: 16px;;
+    }
+    button {
+        padding: 2px;
+    }
+
+    ul {
+        list-style-type: circle;
+    }
+    .complete {
+        text-decoration: line-through;
+        list-style-type: "\1F44D";
+    }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>Todos</h2>
+
+	<form id="add-todos">
+		<label for="new-todo">What do you want to do?</label>
+		<input type="text" id="new-todo" autofocus>
+		<button>Add Todo</button>
+	</form>
+
+	<div id="app"></div>
+
+	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/reef@4/dist/reef.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

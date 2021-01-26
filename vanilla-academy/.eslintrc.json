@@ -1,0 +1,16 @@
+{
+    "extends": "airbnb-base/legacy",
+    "env": {
+        "es6": true
+    },
+    "rules": {
+        "no-empty-pattern": 0,
+        "no-plusplus": 0,
+        "no-unused-expressions": [
+            "error",
+            {
+                "allowTernary": true
+            }
+        ]
+    }
+}

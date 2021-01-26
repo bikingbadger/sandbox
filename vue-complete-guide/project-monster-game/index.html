@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster hit</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Battle Royal</h1>
+    </header>
+    <div id="app">
+        <main>
+            <section id="monster" class="container" v-show="!roundWinner">
+                <h2>Monster Health</h2>
+                <div class="healthbar">
+                    <div class="healthbar__value" :style="monsterHealthStyle">{{ monsterHealth }}</div>
+                </div>
+            </section>
+            <section id="player" class="container" v-show="!roundWinner">
+                <h2>Your Health</h2>
+                <div class="healthbar">
+                    <div class="healthbar__value" :style="userHealthStyle">{{ userHealth }}</div>
+                </div>
+            </section>
+            <section id="controls" v-if="!roundWinner">
+                <button @click="attack(5)">ATTACK</button>
+                <button @click="attack(10)">SPECIAL ATTACK</button>
+                <button @click="heal">HEAL</button>
+                <button>SURRENDER</button>
+            </section>
+            <section v-else>
+                <h2>{{roundWinner}} takes it!!!!!</h2>
+            </section>
+            <section id="log" class="container" v-show="!roundWinner">
+                <h2>Battle Log</h2>
+                <ul>
+                    <li v-for="log in attackLog">{{ log }}</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

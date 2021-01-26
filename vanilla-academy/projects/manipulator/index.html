@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Constructor Pattern</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+
+    <style>
+        .btn-blue {
+            background-color: #0088cc;
+            color: #ffffff;
+        }
+
+        .purple {
+            background-color: rebeccapurple;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>Constructor Pattern</h2>
+
+    <p>
+        <button class="btn-blue" id="button-1">Button 1</button>
+        <button class="btn-blue" id="button-2">Button 2</button>
+        <button class="btn-blue" id="button-3">Button 3</button>
+    </p>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <details>
+        <summary>Javascript Solution</summary>
+        <pre>
+const Manipulator = (function() {
+    // Private variables
+    
+    // Private Methods
+    const toArray = nodeList =&gt; {
+        return Array.prototype.slice.call(nodeList);
+    };
+    
+    /**
+        * Constructor Object
+        */
+    const Constructor = function(searchString) {
+        // Variables
+        this.nodeList = document.querySelectorAll(searchString);
+        console.log(this.nodeList);
+    };
+    
+    // Public methods
+    
+    //   Get an array of items from the DOM.
+    Constructor.prototype.getAll = function() {
+        console.log(this.nodeList);
+        return toArray(this.nodeList);
+    };
+    //   Get the first and last matching items from the DOM.
+    Constructor.prototype.firstLast = function() {
+        const elements = toArray(this.nodeList);
+        const firstElement = elements[0];
+        const lastElement = elements[-1];
+        return [firstElement, lastElement];
+    };
+    
+    //   Add and remove a class to all matching elements.
+    Constructor.prototype.toggle = function(className) {
+        const elements = toArray(this.nodeList);
+        elements.forEach(element =&gt; {
+        element.classList.toggle(className);
+        });
+    };
+    
+    //
+    // Return the constructor
+    //
+    
+    return Constructor;
+    })();            
+        </pre>
+    </details>
+
+    <!-- <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.includes%2Cfetch%2Cdefault"></script> -->
+    <script src="manipulator.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

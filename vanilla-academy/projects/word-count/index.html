@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Word Count</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>Word Count</h2>
+
+    <label for="text">Enter your text below.</label>
+    <textarea id="text"></textarea>
+
+    <p>You've written <strong><span id="word-count">0</span> word<span id='wordPlural'>s</span></strong> and <strong><span id="character-count">0</span> character<span id='charPlural'>s</span></strong>.</p>
+
+    <div style="visibility:hidden;width:100%;height:0" id='easterEgg'>
+        <img src="word-up.gif" alt="Word Up Image">
+    </div>
+
+    <p>
+        Solution and thoughts on how I got it to work can be found
+        <a href="https://hiltonmeyer.com/articles/word-counter.html" target="_blank">here</a>
+    </p>
+    <details>
+        <summary>Javascript Solution</summary>
+        <pre>
+"use strict";
+
+const wordCount = document.querySelector("#word-count");
+const characterCount = document.querySelector("#character-count");
+const text = document.querySelector("#text");
+const charPlural = document.querySelector("#charPlural");
+const wordPlural = document.querySelector("#wordPlural");
+
+const getCharacterCount = () => {
+    return text.value.length;
+};
+
+const getWordCount = () => {
+    const numWords = text.value.split(" ").filter(item => {
+        return item != "";
+    });
+    return numWords.length;
+};
+
+const setPlural = () => {
+    wordPlural.style.visibility = getWordCount() === 1 ? "hidden" : "visible";
+    charPlural.style.visibility =
+    getCharacterCount() === 1 ? "hidden" : "visible";
+};
+
+const setCounts = () => {
+    wordCount.textContent = getWordCount();
+    characterCount.textContent = getCharacterCount();
+    setPlural();
+};
+
+window.addEventListener(
+    "input",
+    event => {
+        if (event.target.matches("#text")) {
+            setCounts();
+        }
+    },
+    false,
+);
+
+setCounts();            
+        </pre>
+    </details>
+    <script src="script.js"></script>
+</body>
+
+</html>

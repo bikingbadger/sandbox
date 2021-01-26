@@ -1,0 +1,65 @@
+:root {
+  --primary-clr: #dde1e7;
+  --text-clr: #595959;
+
+  --radius: 0.2rem;
+  --margin: 0.2rem;
+  --maginneg: -0.2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  /* height: 97%; */
+}
+
+body {
+  background: var(--primary-clr);
+}
+
+.content {
+  /* border: 2px solid red; */
+  width: min(350px, calc(100% - 1rem));
+  height: 50vh;
+
+  padding: 2rem;
+  margin: 5rem auto;
+}
+
+.morph-field {
+  /* height: 3rem; */
+  width: 100%;
+  padding: 1.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 1fr;
+  font-size: 1.125rem;
+}
+
+.morph-button {
+  padding: 1rem;
+  margin: 1rem;
+  border: none;
+  outline: none;
+  background: var(--primary-clr);
+  transition-property: box-shadow;
+  transition-duration: 4s;
+  transition-delay: 2s;
+}
+
+.morph-out {
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1), 5px 5px 10px rgba(0, 0, 0, 0.1),
+    -5px -5px 10px rgba(240, 240, 240, 1), -3px -3px 5px rgba(240, 240, 240, 1);
+}
+
+.morph-in,
+.morph-button:active {
+  border-radius: var(--radius);
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+    inset 3px 3px 5px rgba(0, 0, 0, 0.2),
+    inset -3px -3px 5px rgba(240, 240, 240, 1),
+    inset -5px -5px 10px rgba(240, 240, 240, 1);
+}

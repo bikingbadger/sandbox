@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="https://bikingbadger.github.io/vanilla-academy/css/style.css" />
+</head>
+
+<body>
+    <h1>
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />Vanilla JS Projects
+        <img class="vanilla-icon" src="https://res.cloudinary.com/hiltonmeyer-com/image/upload/v1571336113/ice-cream_mnxdlc.png" alt="ice cream icon" />
+    </h1>
+    <p><a href="/vanilla-academy">&lt; Home</a> </p>
+    <h2>Countdown Timer</h2>
+
+    <div id="timer"></div>
+
+    <details>
+        <summary>Javascript Solution</summary>
+        <pre>
+(function() {
+    // Data object
+    const defaultDuration = 90;
+    const data = { timer: defaultDuration };
+    
+    // Template
+    const template = () =&gt; {
+        // check if time is up and return message
+        if (data.timer === 0)
+        return '⏰ &lt;p&gt;&lt;button data-restart-timer&gt;Restart Timer&lt;/button&gt;&lt;/p&gt;';
+    
+        // extract the minutes from the timer, convert to string and pad with zero's
+        const minutes = parseInt(data.timer / 60)
+        .toString()
+        .padStart(2, '0');
+        // extract the seconds from the timer, convert to string and pad with zero's
+        const seconds = parseInt(data.timer % 60)
+        .toString()
+        .padStart(2, '0');
+        // console.log(`${minutes}:${seconds}`);
+        return `&lt;h1&gt;${minutes}:${seconds}&lt;/h1&gt;`;
+    };
+    
+    // Render
+    const render = () =&gt; {
+        const app = document.querySelector('#timer');
+        if (!app) return;
+    
+        // retrieve the output for the current state of timer
+        const output = template();
+    
+        // check for changes, if there are none no reason to update the document
+        if (app.innerHTML === output) return;
+    
+        // update changes to the document
+        app.innerHTML = template();
+    };
+    
+    const startTimer = () =&gt; {
+        data.timer = defaultDuration;
+        const countDown = window.setInterval(() =&gt; {
+        data.timer === 0 ? window.clearInterval(countDown) : data.timer--;
+        render();
+        }, 1000);
+    };
+    
+    startTimer();
+    
+    // When the restart button is clicked, restart the timer
+    document.addEventListener(
+        'click',
+        event =&gt; {
+        if (event.target.hasAttribute('data-restart-timer')) {
+            startTimer();
+        }
+        },
+        false
+    );
+    })();
+    </pre>
+    </details>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CString.prototype.padStart"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

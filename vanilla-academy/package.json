@@ -1,0 +1,28 @@
+{
+  "name": "vanilla-academy",
+  "version": "1.0.0",
+  "description": "Vanilla Javascript Academy Projects",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bikingbadger/vanilla-academy.git"
+  },
+  "author": "Hilton Meyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bikingbadger/vanilla-academy/issues"
+  },
+  "homepage": "https://github.com/bikingbadger/vanilla-academy#readme",
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}

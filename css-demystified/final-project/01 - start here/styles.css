@@ -1,0 +1,157 @@
+:root {
+  --clr-base-400: #5e5e5e;
+  --clr-base-500: #494949;
+
+  --clr-ui-300: #f8e2ff;
+  --clr-ui-400: #580d3a;
+  --clr-ux-300: #e2ffea;
+  --clr-ux-400: #115926;
+  --clr-dev-300: #e2fcff;
+  --clr-dev-400: #024f4f;
+
+  --clr-accent-400: #7e47c5;
+
+  --ff-accent: 'Podkova', serif;
+  --ff-base: 'Open Sans', sans-serif;
+
+  --fs-300: 0.75rem;
+  --fs-400: 1rem;
+  --fs-500: 2rem;
+
+  --fw-400: 400;
+  --fw-700: 700;
+
+  --shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  --border-radius: 0.75rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ff-base);
+  line-height: 1.5rem;
+  font-weight: var(--fw-400);
+  font-size: var(--fs-400);
+}
+
+.candidate {
+  padding: 1rem;
+}
+
+.candidate > img {
+  border-radius: var(--border-radius);
+}
+
+.name {
+  font-family: var(--ff-accent);
+  font-weight: var(--fw-700);
+  font-size: var(--fs-500);
+}
+.tag {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-700);
+  padding: 0.2rem 0.5rem;
+  background-color: lightgrey;
+  color: var(--clr-base-500);
+  border-radius: 100vw;
+  margin-right: 0.5rem;
+}
+
+.ui {
+  background-color: var(--clr-ui-300);
+}
+
+.ux {
+  background-color: var(--clr-ux-300);
+}
+
+.dev {
+  background-color: var(--clr-dev-300);
+}
+
+.btn {
+  font-family: inherit;
+  background-color: var(--clr-accent-400);
+  color: white;
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+}
+
+.candidate .btn {
+  align-self: end;
+  justify-self: end;
+}
+
+.candidate .social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* /////////////////
+   Layout related
+   no need to touch any of this
+//////////////////*/
+
+.candidates {
+  max-width: 70em;
+  margin: 0 auto;
+  padding: 2em;
+  display: grid;
+  gap: 2em;
+}
+
+.candidate {
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-areas:
+    'img name'
+    'img role'
+    'img bio'
+    'social button';
+  gap: 0.5em;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+}
+
+@media (min-width: 500px) {
+  .candidate {
+    grid-template-columns: min-content minmax(15rem, 22.5rem);
+    grid-template-rows: min-content min-content 1fr auto;
+  }
+}
+
+@media (min-width: 960px) {
+  .candidates {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.candidate img {
+  grid-area: img;
+}
+.candidate .name {
+  grid-area: name;
+}
+.candidate .roles {
+  grid-area: role;
+}
+.candidate .bio {
+  grid-area: bio;
+}
+.candidate .social {
+  grid-area: social;
+}
+.candidate .btn {
+  grid-area: button;
+}
