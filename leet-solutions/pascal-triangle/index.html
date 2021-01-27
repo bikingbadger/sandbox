@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pascal Program</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * @param {number} numRows
+         * @return {number[][]}
+         */
+        var generate = function (numRows) {
+            const pascalsTriangle = []
+            for (let i = 1; i <= numRows; i++) {
+
+                if (i === 1) {
+                    pascalsTriangle.push([1])
+                } else if (i === 2) {
+                    pascalsTriangle.push([1, 1])
+                } else if (i % 2 === 0) {
+                    console.log('Even');
+                    const prevRow = i - 2;
+                    console.log(i, pascalsTriangle[prevRow])
+                    const curRow = [pascalsTriangle[prevRow][0]];
+                    for (let num = 0; num < pascalsTriangle[prevRow].length - 1; num++) {
+                        const value = pascalsTriangle[prevRow][num] + pascalsTriangle[prevRow][num + 1];
+                        curRow.push(value);
+                    }
+                    curRow.push(pascalsTriangle[prevRow][pascalsTriangle[prevRow].length - 1]);
+                    pascalsTriangle.push(curRow)
+                } else {
+                    console.log('Uneven');
+                    const prevRow = i - 2;
+                    console.log(i, pascalsTriangle[prevRow])
+                    const curRow = [pascalsTriangle[prevRow][0]];
+                    for (let num = 0; num < pascalsTriangle[prevRow].length - 1; num++) {
+                        const value = pascalsTriangle[prevRow][num] + pascalsTriangle[prevRow][num + 1];
+                        curRow.push(value);
+                    }
+                    curRow.push(pascalsTriangle[prevRow][pascalsTriangle[prevRow].length - 1]);
+                    pascalsTriangle.push(curRow)
+                }
+                console.log('***************************************');
+            }
+            return pascalsTriangle;
+        };
+
+        pascalsTriangle = generate(5);
+        console.log(pascalsTriangle);
+
+    </script>
+</body>
+
+</html>
