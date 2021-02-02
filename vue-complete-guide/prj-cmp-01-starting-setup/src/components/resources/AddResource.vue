@@ -46,7 +46,7 @@ export default {
   inject: ['addResource'],
   data() {
     return {
-      inputIsInvalid: false
+      inputIsInvalid: false,
     };
   },
   methods: {
@@ -69,8 +69,8 @@ export default {
     },
     confirmError() {
       this.inputIsInvalid = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
