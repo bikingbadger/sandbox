@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  padding: 3rem 0;
+  background-color: fuchsia;
+  color: whitesmoke;
+  text-align: center;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 80ch;
+}
+
+footer {
+  text-align: center;
+}
