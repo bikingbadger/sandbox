@@ -1,0 +1,45 @@
+.up-arrow {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  padding: 1.5rem;
+  background-color: navy;
+  color: white;
+  text-align: center;
+  font-size: x-large;
+  font-weight: 900;
+  border-radius: 15px;
+  transform: rotate(-15deg);
+  transform-origin: left bottom;
+  transition: 0.3s;
+}
+
+.up-arrow:after {
+  content: '';
+  position: absolute;
+  bottom: 0%;
+  left: 5%;
+  width: 110%;
+  height: 8%;
+  border-radius: 50%;
+  box-shadow: 0px 10px 5px grey;
+  transform: rotate(15deg);
+  transform-origin: left bottom;
+}
+
+.up-arrow:hover {
+  transform: rotate(0deg);
+  transform-origin: left bottom;
+}
+
+.up-arrow:hover:after {
+  transform: rotate(15deg);
+  transform-origin: left bottom;
+  display: none;
+}
+
+.up-arrow:active {
+  box-shadow: 2px 2px 10px grey, 2px -2px 10px grey, -2px 2px 10px grey,
+    -2px -2px 10px grey;
+  transition: 0.1s;
+}
