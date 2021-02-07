@@ -143,6 +143,16 @@ h3,
   margin-top: var(--flow-spacer, 1em);
 }
 
+.split {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.split > * {
+  flex-basis: 100%;
+}
+
 section {
   padding: 2.5rem 0;
 }
@@ -174,6 +184,10 @@ section {
 
   section {
     padding: 3.5rem 0;
+  }
+
+  .split {
+    flex-direction: row;
   }
 }
 
