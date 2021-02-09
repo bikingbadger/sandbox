@@ -79,6 +79,12 @@ body {
   font-size: var(--fs-500);
 }
 
+.bg-primary-300 { 
+  background-color: var(--clr-primary-300);
+  border-radius: 1rem;
+  padding: 0 1rem;
+}
+
 /* Typography */
 
 h1,
@@ -166,7 +172,7 @@ section {
 }
 
 .xl-space {
-  margin-top: 5rem;
+  margin-top: 5rem;\
 }
 
 /* Responsive */
