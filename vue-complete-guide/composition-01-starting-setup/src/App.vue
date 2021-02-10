@@ -1,12 +1,15 @@
 <template>
   <section class="container">
-    <h2>{{ userName }}</h2>
-    <h3>{{ age }}</h3>
+    <h2>{{ user.name }}</h2>
+    <h3>{{ user.age }}</h3>
+
+    <div>{{ task.description }}</div>
+    <div>{{ task.complete }}</div>
   </section>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 
 export default {
   // data() {
@@ -15,13 +18,24 @@ export default {
   //   };
   // },
   setup() {
-    const uName = ref('Hilton');
+    const user = ref({
+      name: 'Hilton',
+      age: 39,
+    });
+
+    const task = reactive({
+      description: 'Learn Vue',
+      complete: false,
+    });
 
     setTimeout(() => {
-      uName.value = 'George';
+      user.value.name = 'George';
+      user.value.age = 21;
+
+      task.complete = true;
     }, 2000);
 
-    return { userName: uName };
+    return { user, task };
   },
 };
 </script>
