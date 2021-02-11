@@ -1,7 +1,10 @@
 <template>
   <section class="container">
-    <h2>{{ username }}</h2>
-    <h3>{{ user.age }}</h3>
+    <user-data
+      :first-name="firstName"
+      :last-name="lastName"
+      :user="user"
+    ></user-data>
 
     <div>{{ task.description }}</div>
     <div>{{ task.complete }}</div>
@@ -16,8 +19,12 @@
 
 <script>
 import { ref, reactive, computed, watch } from 'vue';
+import User from './components/User.vue';
 
 export default {
+  components: {
+    UserData: User
+  },
   setup() {
     const user = ref({
       name: 'Hilton',
@@ -32,7 +39,7 @@ export default {
     const firstName = ref('');
     const lastName = ref('');
 
-    watch(firstName, (newValue) => {
+    watch(firstName, newValue => {
       //console.log(newValue, oldValue);
       user.value.name = newValue;
     });
@@ -66,7 +73,9 @@ export default {
       birthday: setNewAge,
       setFirstName,
       setLastName,
-      username
+      username,
+      firstName,
+      lastName
     };
   }
 };
