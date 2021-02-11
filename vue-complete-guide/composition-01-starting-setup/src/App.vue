@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { ref, reactive, computed, watch } from 'vue';
+import { ref, reactive, computed, watch, provide } from 'vue';
 import User from './components/User.vue';
 
 export default {
@@ -66,6 +66,8 @@ export default {
     function setLastName(event) {
       lastName.value = event.target.value;
     }
+
+    provide('user', user);
 
     return {
       user,
