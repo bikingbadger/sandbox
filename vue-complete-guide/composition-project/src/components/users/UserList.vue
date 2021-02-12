@@ -26,7 +26,8 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
+import useSearch from '../../hooks/search.js';
 import UserItem from './UserItem.vue';
 
 export default {
@@ -36,35 +37,10 @@ export default {
   emits: ['list-projects'],
   props: ['users'],
   setup(props) {
-    /* Search */
-    const enteredSearchTerm = ref('');
-    const activeSearchTerm = ref('');
-
-    //Computed
-    const availableUsers = computed(() => {
-      let users = [];
-      if (activeSearchTerm.value) {
-        users = props.users.filter(usr =>
-          usr.fullName.includes(activeSearchTerm.value)
-        );
-      } else if (users) {
-        users = props.users;
-      }
-      return users;
-    });
-
-    // Methods
-    const updateSearch = val => {
-      enteredSearchTerm.value = val;
-    };
-
-    watch(enteredSearchTerm, val => {
-      setTimeout(() => {
-        if (val === enteredSearchTerm.value) {
-          activeSearchTerm.value = val;
-        }
-      }, 300);
-    });
+    const { enteredSearchTerm, availableItems, updateSearch } = useSearch(
+      props.users,
+      'fullName'
+    );
 
     /** Sorting */
     const sorting = ref(null);
@@ -72,9 +48,9 @@ export default {
     //Computed
     const displayedUsers = computed(() => {
       if (!sorting.value) {
-        return availableUsers.value;
+        return availableItems.value;
       }
-      return availableUsers.value.slice().sort((u1, u2) => {
+      return availableItems.value.slice().sort((u1, u2) => {
         if (sorting.value === 'asc' && u1.fullName > u2.fullName) {
           return 1;
         } else if (sorting.value === 'asc') {
@@ -94,9 +70,7 @@ export default {
 
     return {
       enteredSearchTerm,
-      activeSearchTerm,
       sorting,
-      availableUsers,
       displayedUsers,
       updateSearch,
       sort
