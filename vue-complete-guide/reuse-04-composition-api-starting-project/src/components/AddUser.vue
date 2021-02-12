@@ -1,36 +1,26 @@
 <template>
-  <user-alert v-if="alertIsVisible" title="Add a User?" @close="hideAlert">
-    <p>Do you want to continue with adding a user?</p>
-  </user-alert>
-  <section>
-    <h2>Add a User</h2>
-    <button @click="showAlert">Add User</button>
-  </section>
+  <div>
+    <user-alert v-if="alertIsVisible" title="Add a User?" @close="hideAlert">
+      <p>Do you want to continue with adding a user?</p>
+    </user-alert>
+    <section>
+      <h2>Add a User</h2>
+      <button @click="showAlert">Add User</button>
+    </section>
+  </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import useAlert from '../hooks/alert.js';
 import UserAlert from './UserAlert.vue';
 
 export default {
   components: {
-    UserAlert,
+    UserAlert
   },
   setup() {
-    const alertIsVisible = ref(false);
-
-    function showAlert() {
-      alertIsVisible.value = true;
-    }
-    function hideAlert() {
-      alertIsVisible.value = false;
-    }
-    
-    return {
-      alertIsVisible,
-      showAlert,
-      hideAlert
-    };
-  },
+    const [alertIsVisible, showAlert, hideAlert] = useAlert();
+    return { alertIsVisible, showAlert, hideAlert };
+  }
 };
 </script>
