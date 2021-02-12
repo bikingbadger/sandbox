@@ -20,8 +20,8 @@ export default {
   methods: {
     closeDialog() {
       this.$emit('close');
-    },
-  },
+    }
+  }
 };
 </script>
 
