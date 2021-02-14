@@ -256,6 +256,10 @@ section {
   border-width: 4px;
 }
 
+.call-to-action button {
+  align-self: flex-start;
+}
+
 .call-to-action label {
   display: block;
   font-size: var(--fs-400);
@@ -264,7 +268,7 @@ section {
 }
 
 footer {
-  padding-bottom: 2rem;;
+  padding-bottom: 2rem;
 }
 
 .primary-footer__inner {
@@ -321,6 +325,10 @@ footer {
 
   .call-to-action form {
     flex-direction: row;
+  }
+
+  .call-to-action button {
+    align-self: center;
   }
 }
 
