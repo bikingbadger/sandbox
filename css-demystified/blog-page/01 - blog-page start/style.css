@@ -1,6 +1,6 @@
 :root {
-  --ff-sans: "IBM Plex Sans", sans-serif;
-  --ff-serif: "IBM Plex Serif", serif;
+  --ff-sans: 'IBM Plex Sans', sans-serif;
+  --ff-serif: 'IBM Plex Serif', serif;
 
   /* small screen font-sizes */
   --fs-200: 0.75rem;
@@ -155,7 +155,7 @@ a:focus {
 }
 
 .btn::after {
-  content: "\203A";
+  content: '\203A';
   margin-left: 1em;
   font-weight: var(--fw-300);
 }
@@ -219,7 +219,28 @@ section {
   border-radius: var(--br);
   padding: 2rem;
   background-color: var(--clr-primary-400);
+  background-size: cover;
+  background-image: var(--bg-image);
   min-height: 50vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.primary-header .container {
+  margin-top: auto;
+  margin-bottom: auto;
+  flex:  auto;
+}
+
+.page-blog {
+  --bg-image: url('img/hero.jpg');
+  background-position: center center;
+}
+
+.page-home {
+  --bg-image: url('img/blog.jpg');
+  background-position: center left;
 }
 
 .primary-nav {
