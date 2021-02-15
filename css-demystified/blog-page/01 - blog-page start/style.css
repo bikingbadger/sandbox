@@ -445,10 +445,14 @@ footer {
 
   .article-grid .span-full {
     grid-column: span 6;
+
     display: grid;
-    grid-auto-flow: column;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
+
+  .article-grid .span-full img {
+    grid-row: span 3;
   }
 
   .article-grid .span-half {
