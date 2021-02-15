@@ -279,7 +279,7 @@ section {
   align-items: center;
 }
 
-.secondary-navigation > a.btn{
+.secondary-navigation > a.btn {
   margin-left: auto;
 }
 
@@ -425,4 +425,28 @@ footer {
 
 .intro {
   --flow-spacer: 2em;
+}
+
+/* Article Grid */
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+}
+
+.article-grid article {
+  grid-column: span 2;
+}
+
+.article-grid .span-full {
+  grid-column: span 6;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.article-grid .span-half {
+  grid-column: span 3;
 }
