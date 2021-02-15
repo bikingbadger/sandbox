@@ -230,7 +230,11 @@ section {
 .primary-header .container {
   margin-top: auto;
   margin-bottom: auto;
-  flex:  auto;
+  width: 100%;
+}
+
+.primary-header .container > * {
+  max-width: 12ch;
 }
 
 .page-blog {
@@ -267,6 +271,29 @@ section {
 .primary-nav a {
   color: var(--clr-neutral-200);
   text-decoration: none;
+}
+
+.secondary-navigation {
+  display: flex;
+  margin: 2rem 0;
+  align-items: center;
+}
+
+.secondary-navigation > a.btn{
+  margin-left: auto;
+}
+
+.categories {
+  display: flex;
+  gap: 1rem;
+}
+
+.categories button {
+  font-size: var(--fs-300);
+  cursor: pointer;
+  text-transform: uppercase;
+  background: transparent;
+  border: 0;
 }
 
 @media (min-width: 40em) {
