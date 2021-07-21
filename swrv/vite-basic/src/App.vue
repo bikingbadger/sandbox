@@ -8,7 +8,8 @@
     <p>
       The cool thing about SWRV is that the data will refresh if you switch tabs
       or unfocus the browser, then refocusing will refetch so you don't have to
-      poll
+      poll. This gives you an idea of how the data will be run in the background
+      to refresh your data once it changes.
     </p>
     <div>
       <div v-if="error">{{ error.message }}</div>

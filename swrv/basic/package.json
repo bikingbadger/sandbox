@@ -3,7 +3,8 @@
     "serve": "npx @vue/cli serve"
   },
   "dependencies": {
-    "@vue/composition-api": "^0.5.4",
-    "swrv": "~0.5.2"
+    "@vue/cli": "^4.5.11",
+    "@vue/composition-api": "^1.0.0-rc.3",
+    "swrv": "^0.9.3"
   }
 }
