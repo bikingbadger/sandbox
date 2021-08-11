@@ -232,6 +232,33 @@ p {
   margin-right: 20px;
 }
 
+/* Contact */
+
+#contact-form .form-group {
+  padding-bottom: 5px;
+}
+
+#contact-form label {
+  display: block;
+  padding-bottom: 5px;
+}
+
+#contact-form input, #contact-form textarea {
+  width: 100%;
+  border: 1px #333 solid;
+  min-height: 1.75rem; 
+}
+
+#contact-form input:focus, #contact-form textarea:focus {
+  outline: none;
+  border-color: #f7c08a;
+  border-width: 2px;
+}
+
+#contact-form textarea {
+  height: 200px;
+}
+
 /* Features */
 
 .box {
